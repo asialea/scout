@@ -13,9 +13,8 @@ class HomeScreen extends React.Component {
   static navigationOptions = {header:null}
   render() {
     return (
-
-      <LinearGradient colors={[colors.blue3,colors.blue1]}  style={{width: '100%', height: '100%'}}>
-        <View style={overlay}>
+    <ImageBackground source={require('../images/bike.jpg')} style={{width:'100%', height:'100%'}}>
+      <View style={[overlay,{backgroundColor: 'rgba(0,0,0,0.3)'}]}>
           <View style={styles.logoCont}>
             <Icon color={"white"} size={80} type='antdesign' name='home' />
             <Text style={[logo,styles.logo]}>SCOUT</Text>
@@ -26,7 +25,7 @@ class HomeScreen extends React.Component {
             <Button buttonStyle={[styles.button,styles.regButton]} onPress={() => this.props.navigation.navigate('REGISTER')} title={"SIGN UP"}/>
           </View>
         </View>
-        </LinearGradient>
+        </ImageBackground>
     );
   }
 }

@@ -4,19 +4,23 @@ import {Button,Icon} from 'react-native-elements';
 import {overlay,logo,inline,colors,shadow,body,screenWidth,navItems} from '../config/styles'
 import LinearGradient from 'react-native-linear-gradient';
 import {tours,jobs} from '../data/tours';
-import Header from './Header'
+import Header from '../components/Header'
 
 class Dash extends React.Component {
   static navigationOptions = {
-        title: 'Dashboard',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon size={27} color={navItems.color} type='antdesign' name='home' /> ),
+    title: 'Home',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon size={27} color={navItems.color} type='antdesign' name='home' /> ),
+    tabBarOptions:{
+        showLabel:false
+      }
     };
+
   render() {
     return (
-    <LinearGradient colors={[colors.blue3,colors.blue1]}  style={{width: '100%', height: '100%'}}>
+    <LinearGradient colors={[colors.blue4,colors.blue4]}  style={{width: '100%', height: '100%'}}>
       <View style={[overlay]}>
-      <Header text={"Dashboard"}/>
+      <Header text={"Home"}/>
         <View style={body}>
           <Text style={styles.welcome}>Welcome Asia!</Text>
           <View style={styles.blockSmCont}>

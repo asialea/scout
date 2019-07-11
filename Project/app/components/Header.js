@@ -9,7 +9,7 @@ class Header extends React.Component {
   render() {
     return (
     <View style={[shadow,header]}>
-      <Text style={{marginBottom: 10,fontSize: 16}}>{this.props.text}</Text>
+      <Text style={{marginBottom: 13,fontSize: 18,color:'white',fontWeight: '500'}}>{this.props.text}</Text>
     </View>
     );
   }

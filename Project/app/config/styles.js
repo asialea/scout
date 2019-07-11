@@ -46,10 +46,6 @@ export const overlay = {
 
 }
 
-// <Icon size={30} color={navItems.color} type='antdesign' name='pluscircleo' />
-// <Icon size={25} color={navItems.color} type='feather' name='search' />
-// <Icon size={25} color={navItems.color} type='font-awesome' name='envelope-o' />
-
 export const inline = {
   flexDirection: 'row',
   justifyContent: 'flex-start',
@@ -64,8 +60,7 @@ export const header = {
   justifyContent:'center',
   top:0,
   flex:1,
-  marginBottom:5,
-  backgroundColor:"white",
+  backgroundColor:colors.blue4,
 }
 
 export const navItems = {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TextInput,} from 'react-native';
+import {StyleSheet, Text, View, TextInput,ImageBackground} from 'react-native';
 import {colors,input,logo,overlay} from '../config/styles'
 import {ThemeProvider,Button,Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient'
@@ -14,8 +14,8 @@ class Login extends React.Component {
 
   render() {
     return (
-      <LinearGradient colors={[colors.blue3,colors.blue1]}  style={{width: '100%', height: '100%'}}>
-        <View style={overlay}>
+    <ImageBackground source={require('../images/bike.jpg')} style={{width:'100%', height:'100%'}}>
+    <View style={[overlay,{backgroundColor: 'rgba(0,0,0,0.3)'}]}>
           <Icon color={"white"} size={70} type='antdesign' name='home' />
           <Text style={[logo,styles.logo]}>SCOUT</Text>
           <TextInput  onChangeText={(text) => this.setState({username:text})}
@@ -30,7 +30,7 @@ class Login extends React.Component {
           <Button buttonStyle={styles.button} onPress={() => {this.login;this.props.navigation.navigate('mainFlow')}} title={"SIGN IN"}/>
           <Text style={{alignSelf:'center',color:"white"}}>Forgot Password?</Text>
         </View>
-      </LinearGradient>
+      </ImageBackground>
     );
   }
 }
