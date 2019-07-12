@@ -48,7 +48,6 @@ export const overlay = {
 
 export const inline = {
   flexDirection: 'row',
-  justifyContent: 'flex-start',
   padding:0,
   margin:0,
 }

@@ -14,8 +14,8 @@ class Login extends React.Component {
 
   render() {
     return (
-    <ImageBackground source={require('../images/bike.jpg')} style={{width:'100%', height:'100%'}}>
-    <View style={[overlay,{backgroundColor: 'rgba(0,0,0,0.3)'}]}>
+    <LinearGradient colors={[colors.blue2,colors.blue1]}  style={{width: '100%', height: '100%'}}>
+      <View style={[overlay,{backgroundColor: 'rgba(225,225,225,0.2)'}]}>
           <Icon color={"white"} size={70} type='antdesign' name='home' />
           <Text style={[logo,styles.logo]}>SCOUT</Text>
           <TextInput  onChangeText={(text) => this.setState({username:text})}
@@ -30,7 +30,7 @@ class Login extends React.Component {
           <Button buttonStyle={styles.button} onPress={() => {this.login;this.props.navigation.navigate('mainFlow')}} title={"SIGN IN"}/>
           <Text style={{alignSelf:'center',color:"white"}}>Forgot Password?</Text>
         </View>
-      </ImageBackground>
+      </LinearGradient>
     );
   }
 }
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width:255,
     borderBottomWidth: 1,
     borderBottomColor:'white',
-    marginBottom:35,
+    marginBottom:30,
     color: "white",
     alignSelf: 'center'
   },
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   logo:{
     fontSize: 25,
     fontWeight: "400",
-    color: "white"
+    color: "white",
+    marginBottom: 20,
   }
 });

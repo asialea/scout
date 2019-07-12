@@ -15,15 +15,31 @@ class Search extends React.Component {
         showLabel:false
       }
     };
+
+  constructor() {
+      super();
+      this.state = {
+         filter: false,
+      }
+   }
+   toggleFilter = () => {
+      this.setState({filter: !this.state.filter})
+   }
+
   render() {
     return (
-    <LinearGradient colors={[colors.blue3,colors.blue1]}  style={{width: '100%', height: '100%'}}>
       <View style={overlay}>
-        <View style={{flex:2}}>
-          <View style={[styles.searchCont,{paddingTop:45}]}>
-            <Input inputContainerStyle={styles.search}leftIcon={<Icon color={colors.grey} name='search'size={22}/>} placeholder="Search"/>
+        <View>
+          <View style={[styles.filter,{marginTop:45},inline]}>
+            <View style={{flex:6}}>
+              <Input inputContainerStyle={styles.search}leftIcon={<Icon color={colors.grey} name='search'size={22}/>} placeholder="Search"/>
+            </View>
+            <View style={{flex:1}}>
+              <Button onPress={this.toggleFilter} type={'clear'} buttonStyle={{width:50}} icon={<Icon size={30} color={"white"} type='materialicons' name='view-headline' />}/>
+            </View>
           </View>
-          <View style={styles.searchCont}>
+        {this.state.filter ?
+          <View style={styles.filter}>
             <ScrollView horizontal>
               <View style={styles.tile}><Text style={[styles.text,{color:'white'}]}>Radius</Text></View>
               <View style={styles.tile}><Text style={[styles.text,{color:'white'}]}>Zip Code</Text></View>
@@ -31,9 +47,10 @@ class Search extends React.Component {
               <View style={styles.tile}><Text style={[styles.text,{color:'white'}]}>Time</Text></View>
             </ScrollView>
           </View>
+        : null}
         </View>
 
-          <View style={[body]}>
+          <View style={body}>
             <ScrollView>
               {listings.length>0 ? listings.map((listing,idx) =>(
               <View key={idx} style={[styles.cont,shadow,{alignItems: 'flex-start'}]}>
@@ -52,7 +69,6 @@ class Search extends React.Component {
           </View>
           {this.props.children}
         </View>
-      </LinearGradient>
       );
     }
   }
@@ -67,23 +83,22 @@ class Search extends React.Component {
       alignItems: 'center',
       backgroundColor: 'white',
       borderBottomWidth: 1,
-      borderColor: colors.grey,
-      marginBottom: 5,
+      borderColor: colors.lightGrey,
+      marginBottom: 15,
     },
     text:{
       fontSize: 16,
       color:colors.font,
     },
-    searchCont:{
+    filter:{
       backgroundColor: colors.blue4,
-      width: screenWidth,
+      height: 55,
       alignItems: 'center',
-      justifyContent: 'center',
-      paddingBottom:2,
+      width: screenWidth
     },
     tile:{
-      paddingHorizontal:15,
-      paddingVertical: 8,
+      paddingHorizontal:10,
+      paddingVertical: 5,
       borderColor: colors.blue1,
       borderWidth: 1,
       margin: 12,
@@ -91,8 +106,8 @@ class Search extends React.Component {
     },
     search:{
       borderColor:'white',
-      backgroundColor: colors.lightGrey,
+      backgroundColor: 'white',
       borderRadius: 5,
-
+      height: 37,
     }
   })

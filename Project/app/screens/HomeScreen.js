@@ -13,8 +13,8 @@ class HomeScreen extends React.Component {
   static navigationOptions = {header:null}
   render() {
     return (
-    <ImageBackground source={require('../images/bike.jpg')} style={{width:'100%', height:'100%'}}>
-      <View style={[overlay,{backgroundColor: 'rgba(0,0,0,0.3)'}]}>
+    <ImageBackground source={require('../images/home-design.jpg')} style={{width:'100%', height:'100%'}}>
+      <View style={[overlay,{backgroundColor: 'rgba(0,0,0,0.2)'}]}>
           <View style={styles.logoCont}>
             <Icon color={"white"} size={80} type='antdesign' name='home' />
             <Text style={[logo,styles.logo]}>SCOUT</Text>
