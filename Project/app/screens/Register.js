@@ -18,8 +18,8 @@ class Register extends React.Component {
 
   render() {
     return (
-      <LinearGradient colors={[colors.blue3,colors.blue1]}  style={{width: '100%', height: '100%'}}>
-        <View style={overlay}>
+      <ImageBackground source={require('../images/home-design.jpg')} style={{width:'100%', height:'100%'}}>
+        <View style={[overlay,{backgroundColor: 'rgba(70, 71, 105,0.9)'}]}>       
           <Icon color={"white"} size={70} type='antdesign' name='home' />
           <Text style={[logo,styles.logo]}>SCOUT</Text>
 
@@ -49,7 +49,7 @@ class Register extends React.Component {
           />
           <Button buttonStyle={styles.button} onPress={() => this.register} title={"SIGN UP"}/>
         </View>
-      </LinearGradient>
+    </ImageBackground>
     );
   }
 }

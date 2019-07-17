@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TextInput,ImageBackground,TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TextInput,ImageBackground} from 'react-native';
 import {colors,input,logo,overlay} from '../config/styles'
 import {ThemeProvider,Button,Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
@@ -10,22 +10,35 @@ class HomeScreen extends React.Component {
   { username:null,
     password:null,
   };
+
   static navigationOptions = {header:null}
+
   render() {
+
+    const theme = {
+        Button: {
+          titleStyle: {
+            color: colors.font,
+          },
+        },
+      };
+
     return (
     <ImageBackground source={require('../images/home-design.jpg')} style={{width:'100%', height:'100%'}}>
-      <View style={[overlay,{backgroundColor: 'rgba(0,0,0,0.2)'}]}>
+      <View style={[overlay,{backgroundColor: 'rgba(0,0,0,0.3)'}]}>
           <View style={styles.logoCont}>
             <Icon color={"white"} size={80} type='antdesign' name='home' />
             <Text style={[logo,styles.logo]}>SCOUT</Text>
             <Text style={{color:"white",fontSize:20}}>Apartment hunting made simple</Text>
           </View>
           <View style={styles.reg}>
-            <Button type={'outline'} buttonStyle={styles.button} onPress={() => this.props.navigation.navigate('LOGIN')} title={"SIGN IN"}/>
-            <Button buttonStyle={[styles.button,styles.regButton]} onPress={() => this.props.navigation.navigate('REGISTER')} title={"SIGN UP"}/>
+            <ThemeProvider theme={theme}>
+              <Button type={'outline'} buttonStyle={styles.button} onPress={() => this.props.navigation.navigate('LOGIN')} title={"SIGN IN"}/>
+            </ThemeProvider>
+            <Button buttonStyle={[styles.button,{backgroundColor: colors.font}]} onPress={() => this.props.navigation.navigate('REGISTER')} title={"SIGN UP"}/>
           </View>
-        </View>
-        </ImageBackground>
+      </View>
+    </ImageBackground>
     );
   }
 }
@@ -36,18 +49,12 @@ export default(HomeScreen)
 
 const styles = StyleSheet.create({
 
-  loginReg:{
-    width:255,
-    borderBottomWidth: 1,
-    borderBottomColor:'white',
-    margin:5,
-    color: "black",
-  },
   button:{
     alignSelf: "center",
     width:255,
     borderRadius: 50,
     margin:7,
+    borderColor: colors.font,
   },
   logoCont:
   {

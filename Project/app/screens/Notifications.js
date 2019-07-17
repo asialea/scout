@@ -13,9 +13,7 @@ class Notifications extends React.Component {
     title: 'Notifications',
     tabBarIcon: ({ tintColor }) => (
       <Icon size={24} color={navItems.color} type='font-awesome' name='bell-o' />),
-    tabBarOptions:{
-        showLabel:false
-      }
+
     };
   render() {
 
@@ -26,7 +24,7 @@ class Notifications extends React.Component {
     }
   ]
     return (
-  <LinearGradient colors={[colors.blue3,colors.blue1]}  style={{width: '100%', height: '100%'}}>
+  <LinearGradient colors={['#a8c0ff','#C9D6FF']}>
     <View style={overlay}>
       <Header text={"Notifications"}/>
         <View style={body}>

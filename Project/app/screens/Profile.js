@@ -5,14 +5,12 @@ import {Button,Icon} from 'react-native-elements';
 import Header from '../components/Header'
 import LinearGradient from 'react-native-linear-gradient';
 
+
 class Profile extends React.Component {
   static navigationOptions = {
     title: 'Profile',
     tabBarIcon: ({ tintColor }) => (
       <Icon size={27} color={navItems.color} type='antdesign' name='user' /> ),
-    tabBarOptions:{
-        showLabel:false
-      }
     };
   constructor() {
       super();
@@ -28,8 +26,7 @@ class Profile extends React.Component {
       <View style={overlay}>
       <Header text={"Profile"}/>
       <View style={body}>
-        <LinearGradient colors={[colors.blue3,colors.blue1]} style={styles.top}>
-        </LinearGradient>
+      <LinearGradient colors={['#a8c0ff','#C9D6FF']}  style={styles.top}></LinearGradient>
           <View style={styles.infoCont}>
             <View style={styles.editAvi}><Icon color={colors.font} size={25} type='font-awesome' name='camera'/></View>
             <Switch style={styles.switch}  onValueChange = {this.toggleSwitch} value = {this.state.switchValue}/>
@@ -53,10 +50,7 @@ class Profile extends React.Component {
             </View>
           { this.state.switchValue ?
             <View style={styles.info}>
-              <View style={inline}>
-                <Text style={styles.title}>Scout Info</Text>
-                <View style={styles.data}><Icon color={colors.font} size={18} type='font-awesome' name='pencil' /></View>
-              </View>
+              <Text style={styles.title}>Scout Info</Text>
               <View style={inline}>
                 <Text style={styles.text}>Rate</Text>
                 <Text style={[styles.text,styles.data]}>$10 + $4/hr</Text>
@@ -126,6 +120,7 @@ const styles = StyleSheet.create({
   },
   top:{
     flex:4,
+    backgroundColor: colors.main,
   },
   infoCont:{
     backgroundColor: "white",

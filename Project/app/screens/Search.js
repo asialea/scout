@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {StyleSheet,ScrollView,Text, View, TextInput,Image} from 'react-native';
 import {screenWidth,colors,body,inline,overlay,shadow,input,header,navItems} from '../config/styles'
 import {Button,Icon,Input} from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
 import {listings} from '../data/listings'
 
 
@@ -11,9 +10,6 @@ class Search extends React.Component {
     title: 'Search',
     tabBarIcon: ({ tintColor }) => (
     <Icon size={25} color={navItems.color} type='feather' name='search' />),
-    tabBarOptions:{
-        showLabel:false
-      }
     };
 
   constructor() {
@@ -30,7 +26,7 @@ class Search extends React.Component {
     return (
       <View style={overlay}>
         <View>
-          <View style={[styles.filter,{marginTop:45},inline]}>
+          <View style={[styles.filter,inline,{paddingTop:40}]}>
             <View style={{flex:6}}>
               <Input inputContainerStyle={styles.search}leftIcon={<Icon color={colors.grey} name='search'size={22}/>} placeholder="Search"/>
             </View>
@@ -39,12 +35,12 @@ class Search extends React.Component {
             </View>
           </View>
         {this.state.filter ?
-          <View style={styles.filter}>
+          <View style={[styles.filter]}>
             <ScrollView horizontal>
-              <View style={styles.tile}><Text style={[styles.text,{color:'white'}]}>Radius</Text></View>
-              <View style={styles.tile}><Text style={[styles.text,{color:'white'}]}>Zip Code</Text></View>
-              <View style={styles.tile}><Text style={[styles.text,{color:'white'}]}>Date</Text></View>
-              <View style={styles.tile}><Text style={[styles.text,{color:'white'}]}>Time</Text></View>
+              <Button type={"outline"} buttonStyle={styles.tile} title={"Radius"}></Button>
+              <Button type={"outline"} buttonStyle={styles.tile} title={"Zip Code"}></Button>
+              <Button type={"outline"} buttonStyle={styles.tile} title={"Date"}></Button>
+              <Button type={"outline"} buttonStyle={styles.tile} title={"Time"}></Button>
             </ScrollView>
           </View>
         : null}
@@ -91,15 +87,14 @@ class Search extends React.Component {
       color:colors.font,
     },
     filter:{
-      backgroundColor: colors.blue4,
-      height: 55,
+      backgroundColor: colors.font,
       alignItems: 'center',
-      width: screenWidth
+      width: screenWidth,justifyContent: 'flex-end'
     },
     tile:{
       paddingHorizontal:10,
       paddingVertical: 5,
-      borderColor: colors.blue1,
+      borderColor: 'white',
       borderWidth: 1,
       margin: 12,
       borderRadius: 5,

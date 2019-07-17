@@ -10,14 +10,11 @@ class Messages extends React.Component {
     title: 'Messages',
     tabBarIcon: ({ tintColor }) => (
     <Icon size={25} color={navItems.color} type='font-awesome' name='envelope-o' />),
-    tabBarOptions:{
-        showLabel:false
-      }
 
     };
   render() {
     return (
-    <LinearGradient colors={[colors.blue3,colors.blue1]}  style={{width: '100%', height: '100%'}}>
+      <LinearGradient colors={['#a8c0ff','#C9D6FF']}>
       <View style={overlay}>
       <Header text={"Messages"}/>
         <View style={body}>

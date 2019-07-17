@@ -6,7 +6,7 @@ export const colors = {
   lightGrey: "rgb(242, 246, 252)",
   lightBlue:"#e8f4ff",
   darkBlue:"rgb(2,1,4)",
-  font:"#464769",
+  font:"rgb(70, 71, 105)",
   darkGrey:"#595959",
   blue1:"#ADD7F6",
   blue2:"#87BFFF",
@@ -43,7 +43,6 @@ export const overlay = {
   justifyContent: "center",
   width: '100%',
   height: '100%',
-
 }
 
 export const inline = {
@@ -59,7 +58,7 @@ export const header = {
   justifyContent:'center',
   top:0,
   flex:1,
-  backgroundColor:colors.blue4,
+  backgroundColor:colors.font,
 }
 
 export const navItems = {

@@ -1,27 +1,29 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View,Button} from 'react-native';
+import {Icon} from 'react-native-elements';
+import {navItems} from './config/styles'
 import {createStackNavigator,createBottomTabNavigator,createDrawerNavigator,createMaterialTopTabNavigator,
   createSwitchNavigator,createAppContainer} from "react-navigation";
 import HomeScreen from './screens/HomeScreen'
 import IosFonts from './screens/Fonts';
 import Login from './screens/Login';
 import Register from './screens/Register';
-import Dash from './screens/Dash'
+import Bookings from './screens/Bookings'
 import Notifications from './screens/Notifications'
-import Listing from './screens/Listing'
 import Search from './screens/Search'
 import Messages from './screens/Messages'
 import Profile from './screens/Profile'
+
+import SideMenu from './components/CustomDrawer'
 
 
 const DashStack = createBottomTabNavigator({
   Profile: { screen: Profile },
   Notifications: { screen: Notifications },
-  Listing: { screen: Dash },
+  Bookings: {screen: Bookings},
   Search: { screen: Search },
   Messages: { screen: Messages },
 },
-{initialRouteName:'Listing'
+{initialRouteName:'Bookings'
 },
 )
 
@@ -46,7 +48,8 @@ const AppNavigator = createSwitchNavigator({
       Logout:{screen:HomeScreen}
     },
     {initialRouteName:'Dashboard',
-    }
+    contentComponent: SideMenu,
+    },
   ),
   },
 
