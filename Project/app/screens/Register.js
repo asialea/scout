@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput,ImageBackground,TouchableOpacity} from 'react-native';
 import {colors,input,logo,overlay} from '../config/styles'
-import {ThemeProvider,Button,Icon} from 'react-native-elements';
+import {Button,Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient'
 
 
@@ -19,7 +19,7 @@ class Register extends React.Component {
   render() {
     return (
       <ImageBackground source={require('../images/home-design.jpg')} style={{width:'100%', height:'100%'}}>
-        <View style={[overlay,{backgroundColor: 'rgba(70, 71, 105,0.9)'}]}>       
+        <View style={[overlay,{backgroundColor: 'rgba(70, 71, 105,0.9)'}]}>
           <Icon color={"white"} size={70} type='antdesign' name='home' />
           <Text style={[logo,styles.logo]}>SCOUT</Text>
 

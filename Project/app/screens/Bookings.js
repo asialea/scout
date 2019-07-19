@@ -23,20 +23,6 @@ class Bookings extends React.Component {
       };
    }
 
-
-  showDateTimePicker = () => {
-    this.setState({ isDateTimePickerVisible: true });
-  };
-
-  hideDateTimePicker = () => {
-    this.setState({ isDateTimePickerVisible: false });
-  };
-
-  handleDatePicked = date => {
-    console.log("A date has been picked: ", date);
-    this.hideDateTimePicker();
-  };
-
   render() {
     return (
     <View style={[overlay]}>

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {StyleSheet,ScrollView,Text, View, TextInput,Image} from 'react-native';
+import {StyleSheet,ScrollView,Text, View, TextInput,Image,Slider} from 'react-native';
+//Slider deprecated fix later
 import {screenWidth,colors,body,inline,overlay,shadow,input,header,navItems} from '../config/styles'
-import {Button,Icon,Input} from 'react-native-elements';
+import {Button,Icon,Input,ThemeProvider} from 'react-native-elements';
 import {listings} from '../data/listings'
-
 
 class Search extends React.Component {
   static navigationOptions = {
@@ -15,14 +15,20 @@ class Search extends React.Component {
   constructor() {
       super();
       this.state = {
-         filter: false,
+        radius:false,
       }
    }
-   toggleFilter = () => {
-      this.setState({filter: !this.state.filter})
-   }
+
 
   render() {
+    const theme = {
+        Button: {
+          titleStyle: {
+            color: "white",
+            fontSize:16
+          },
+        },
+      };
     return (
       <View style={overlay}>
         <View>
@@ -30,20 +36,40 @@ class Search extends React.Component {
             <View style={{flex:6}}>
               <Input inputContainerStyle={styles.search}leftIcon={<Icon color={colors.grey} name='search'size={22}/>} placeholder="Search"/>
             </View>
-            <View style={{flex:1}}>
-              <Button onPress={this.toggleFilter} type={'clear'} buttonStyle={{width:50}} icon={<Icon size={30} color={"white"} type='materialicons' name='view-headline' />}/>
-            </View>
           </View>
-        {this.state.filter ?
           <View style={[styles.filter]}>
             <ScrollView horizontal>
-              <Button type={"outline"} buttonStyle={styles.tile} title={"Radius"}></Button>
+            <ThemeProvider theme={theme}>
+              <Button type={"outline"} buttonStyle={styles.tile} onPress={()=>this.setState({radius:true})} title={"Radius"}></Button>
+            </ThemeProvider>
+            <ThemeProvider theme={theme}>
               <Button type={"outline"} buttonStyle={styles.tile} title={"Zip Code"}></Button>
+            </ThemeProvider>
+            <ThemeProvider theme={theme}>
               <Button type={"outline"} buttonStyle={styles.tile} title={"Date"}></Button>
+            </ThemeProvider>
+            <ThemeProvider theme={theme}>
               <Button type={"outline"} buttonStyle={styles.tile} title={"Time"}></Button>
+            </ThemeProvider>
             </ScrollView>
           </View>
-        : null}
+        </View>
+
+        <View style={styles.filterPop}>
+          {this.state.radius ?
+            <View>
+            <Text style={styles.heading}>Radius</Text>
+            <Slider
+               style={{width: 280, height: 60}}
+               minimumValue={0}
+               maximumValue={30}
+               value={0}
+             />
+            <View style={[inline,{height: 50,backgroundColor: colors.font,width: screenWidth,alignSelf: 'center'}]}>
+              <Button style={{position: 'absolute',left: 20}} title={'Reset'}></Button>
+              <Button style={{position: 'absolute',right: 20}} title={'Apply'}></Button>
+            </View>
+          </View> :null}
         </View>
 
           <View style={body}>
@@ -89,20 +115,31 @@ class Search extends React.Component {
     filter:{
       backgroundColor: colors.font,
       alignItems: 'center',
-      width: screenWidth,justifyContent: 'flex-end'
+      width: screenWidth,
+      justifyContent: 'flex-end'
     },
     tile:{
       paddingHorizontal:10,
-      paddingVertical: 5,
+      paddingVertical: 2,
       borderColor: 'white',
       borderWidth: 1,
       margin: 12,
-      borderRadius: 5,
+      borderRadius: 2,
     },
     search:{
       borderColor:'white',
       backgroundColor: 'white',
       borderRadius: 5,
       height: 37,
-    }
+      width:0.9*screenWidth,
+      alignSelf: 'center'
+    },
+    filterPop:{
+      paddingTop:10,
+      width: screenWidth*0.8
+    },
+    heading:{
+      fontSize: 20,
+      color: colors.grey
+      }
   })

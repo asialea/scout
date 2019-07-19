@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput,ImageBackground} from 'react-native';
 import {colors,input,logo,overlay} from '../config/styles'
-import {ThemeProvider,Button,Icon} from 'react-native-elements';
+import {Button,Icon} from 'react-native-elements';
 
 
 class Login extends React.Component {

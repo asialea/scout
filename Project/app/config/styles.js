@@ -62,7 +62,7 @@ export const header = {
 }
 
 export const navItems = {
-  color:colors.darkGrey,
+  color:colors.grey,
 }
 
 export const body = {
