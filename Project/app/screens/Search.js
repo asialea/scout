@@ -4,6 +4,8 @@ import {StyleSheet,ScrollView,Text, View, TextInput,Image,Slider} from 'react-na
 import {screenWidth,colors,body,inline,overlay,shadow,input,header,navItems} from '../config/styles'
 import {Button,Icon,Input,ThemeProvider} from 'react-native-elements';
 import {listings} from '../data/listings'
+import FilterButtons from '../components/FilterButtons'
+// import Slider from '@react-native-community/slider';
 
 class Search extends React.Component {
   static navigationOptions = {
@@ -15,7 +17,7 @@ class Search extends React.Component {
   constructor() {
       super();
       this.state = {
-        radius:false,
+        filter:false,
       }
    }
 
@@ -43,7 +45,7 @@ class Search extends React.Component {
               <Button type={"outline"} buttonStyle={styles.tile} onPress={()=>this.setState({radius:true})} title={"Radius"}></Button>
             </ThemeProvider>
             <ThemeProvider theme={theme}>
-              <Button type={"outline"} buttonStyle={styles.tile} title={"Zip Code"}></Button>
+              <Button type={"outline"} buttonStyle={styles.tile} onPress={()=>this.setState({zipcode:true})} title={"Zip Code"}></Button>
             </ThemeProvider>
             <ThemeProvider theme={theme}>
               <Button type={"outline"} buttonStyle={styles.tile} title={"Date"}></Button>
@@ -56,20 +58,23 @@ class Search extends React.Component {
         </View>
 
         <View style={styles.filterPop}>
-          {this.state.radius ?
+          {this.state.filter ?
             <View>
-            <Text style={styles.heading}>Radius</Text>
+            <Text style={[styles.heading,{alignSelf: 'center'}]}>Filters</Text>
+            <Text style={[styles.heading,{fontSize: 16}]}>Radius</Text>
             <Slider
                style={{width: 280, height: 60}}
                minimumValue={0}
                maximumValue={30}
                value={0}
              />
-            <View style={[inline,{height: 50,backgroundColor: colors.font,width: screenWidth,alignSelf: 'center'}]}>
-              <Button style={{position: 'absolute',left: 20}} title={'Reset'}></Button>
-              <Button style={{position: 'absolute',right: 20}} title={'Apply'}></Button>
+            <View style={inline}>
+             <Text style={[styles.heading,{fontSize: 16}]}>Zip Code</Text>
+             <Input style={{fontSize: 16}} placeholder={'Zip Code'}/>
             </View>
-          </View> :null}
+          <FilterButtons onClose={()=>this.setState({radius:false})}/>
+          </View>
+          :null}
         </View>
 
           <View style={body}>
@@ -141,5 +146,6 @@ class Search extends React.Component {
     heading:{
       fontSize: 20,
       color: colors.grey
-      }
+    },
+
   })

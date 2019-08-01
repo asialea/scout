@@ -23,6 +23,15 @@ class Bookings extends React.Component {
       };
    }
 
+
+  showDateTimePicker=()=>{
+    this.setState({isDateTimePickerVisible:true});
+  }
+
+  handleDatePicked(){
+    
+  }
+
   render() {
     return (
     <View style={[overlay]}>
@@ -50,8 +59,8 @@ class Bookings extends React.Component {
             <Text style={[styles.popup,styles.heading]}>New Listing</Text>
             <TextInput style={[input,styles.popup,{borderBottomWidth: 0.2}]} placeholder="Address"/>
             <TextInput style={[input,styles.popup,{borderBottomWidth: 0.2}]} placeholder="Unit # (optional)"/>
-            <Button type={"clear"} style={styles.popup}title="Appointment Time (optional)" onPress={this.showDateTimePicker} />
-            <DateTimePicker mode={'datetime'} isVisible={this.state.isDateTimePickerVisible} onConfirm={this.handleDatePicked} onCancel={this.hideDateTimePicker}/>
+            <Button type={"clear"} style={styles.popup}title="Appointment Time (optional)" onPress={()=>{this.setState({isDateTimePickerVisible:true})}} />
+            <DateTimePicker mode={'datetime'} isVisible={this.state.isDateTimePickerVisible} onConfirm={this.handleDatePicked} onCancel={()=>{this.setState({visible:false})}}/>
             <Button buttonStyle={{backgroundColor:colors.font}} title="Submit" onPress={()=>{this.setState({ visible: false });}}/>
           </DialogContent>
         </Dialog>

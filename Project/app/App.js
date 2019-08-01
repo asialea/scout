@@ -15,6 +15,11 @@ import Profile from './screens/Profile'
 
 import SideMenu from './components/CustomDrawer'
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers/index.js';
+
+const store = createStore(rootReducer);
 
 const DashStack = createBottomTabNavigator({
   Profile: { screen: Profile },
@@ -55,4 +60,15 @@ const AppNavigator = createSwitchNavigator({
 
 });
 
-export default createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(AppNavigator);
+
+
+export default class App extends Component {
+  render () {
+    return (
+        <Provider store={store}>
+          <AppContainer/>
+        </Provider>
+    )
+  }
+}

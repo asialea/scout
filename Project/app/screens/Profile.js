@@ -4,9 +4,11 @@ import {screenWidth,colors,body,inline,overlay,shadow,navItems} from '../config/
 import {Button,Icon} from 'react-native-elements';
 import Header from '../components/Header'
 import LinearGradient from 'react-native-linear-gradient';
+import {connect} from 'react-redux';
 
 
 class Profile extends React.Component {
+
   static navigationOptions = {
     title: 'Profile',
     tabBarIcon: ({ tintColor }) => (
@@ -21,7 +23,13 @@ class Profile extends React.Component {
    toggleSwitch = (value) => {
       this.setState({switchValue: value})
    }
+
+  componentDidMount(){
+    console.log(this.props.user.type);
+  }
+
   render() {
+    const user = this.props.user;
     return (
       <View style={overlay}>
       <Header text={"Profile"}/>
@@ -37,15 +45,15 @@ class Profile extends React.Component {
               </View>
               <View style={inline}>
                 <Text style={styles.text}>Display Name</Text>
-                <Text style={[styles.text,styles.data]}>Asia</Text>
+                <Text style={[styles.text,styles.data]}>{user.name}</Text>
               </View>
               <View style={inline}>
                 <Text style={styles.text}>Username</Text>
-                <Text style={[styles.text,styles.data]}>@asia</Text>
+                <Text style={[styles.text,styles.data]}>@{user.username}</Text>
               </View>
               <View style={inline}>
                 <Text style={styles.text}>Email</Text>
-                <Text style={[styles.text,styles.data]}>asia@test.com</Text>
+                <Text style={[styles.text,styles.data]}>{user.email}</Text>
               </View>
             </View>
           { this.state.switchValue ?
@@ -69,7 +77,7 @@ class Profile extends React.Component {
               </View>
             </View> : null}
           </View>
-          <Image source={require('../images/Aaron_Asia2.jpeg')} style={styles.avi}/>
+          <Image source={user.avi} style={styles.avi}/>
       </View>
         {this.props.children}
       </View>
@@ -77,7 +85,21 @@ class Profile extends React.Component {
   }
 }
 
-export default(Profile)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // fetchUser: () => {
+    //   dispatch(fetchUser())
+    // }
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 const styles = StyleSheet.create({
   editAvi:{
