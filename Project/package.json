@@ -23,7 +23,7 @@
     "redux": "^4.0.4",
     "redux-axios-middleware": "^4.0.1",
     "watchman": "^1.0.0",
-    "yarn": "^1.16.0"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
